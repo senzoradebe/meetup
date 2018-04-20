@@ -1,0 +1,5 @@
+<div class="selectWrapper">
+	<select [(ngModel)]="selectedCategoryId"  name="selCatesory" (change)="selectCategory(selectedCategoryId)">
+		<option *ngFor="let cat of categories" [value]="cat.id" >{{cat.name}}</option>
+	</select>
+</div>

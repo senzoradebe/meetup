@@ -1,0 +1,25 @@
+
+<!-- https://getbootstrap.com/docs/4.0/content/reboot/#forms -->
+<div class="container-fluid">
+	<div class="row">
+		<form class="bd-example">
+			<fieldset>
+				<legend>Change Default Category</legend>
+				<p><label for="input">Default Category : </label> {{ getDefaultCategory() }}</p>
+				<p>
+					<app-category-list 
+						[categoryList]="categories" 
+						(onCategoryChanged)="onCategoryChange($event)">	
+					</app-category-list>
+				</p>
+				<ngb-alert 
+					*ngIf="successMessage" type="{{alertType}}" 
+					(close)="successMessage = null">{{ successMessage }}
+				</ngb-alert>
+				<p>
+					<input type="button" (click)="cacheDefaultCategory()" value="Save Default Category">
+				</p>
+			</fieldset>
+		</form>
+	</div>
+</div>

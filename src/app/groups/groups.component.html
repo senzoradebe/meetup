@@ -1,0 +1,43 @@
+<div class="container">
+	<br/>
+
+	<ul class="list-group">
+	  <li class="list-group-item active">Filters (Prefered Category : {{ getDefaultCategory() }})</li>
+	  <li *ngFor="let filter of filters_value" class="list-group-item"> {{ filter }} </li> 
+	</ul>
+
+	<br/>
+
+	<div class="row">
+		<div class="col-8">
+			<app-category-list 
+				[categoryList]="categories" 
+				(onCategoryChanged)="onCategoryChange($event)">
+					
+			</app-category-list>
+		</div>
+		
+		<div class="col-4">
+			<button type="button" class="btn btn-outline-secondary" (click)="addFilter()">Add Filter</button>
+		</div>
+	</div>
+
+	<br/>
+	<ngb-alert 
+		*ngIf="successMessage" type="{{alertType}}" 
+		(close)="successMessage = null">{{ successMessage }}
+	</ngb-alert>
+	<div class="row card-group">
+		<div class="col-3"  *ngFor="let group of groups">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">{{ group.name }}</h5>
+					<p class="card-text">{{ group.city }}, {{ group.country }} </p>
+					<p class="card-text">{{ group.who }}</p>
+					<a href="{{group.link}}">{{group.link}}</a>
+				</div>
+              </div>
+          </div>
+      </div>
+</div>
+
